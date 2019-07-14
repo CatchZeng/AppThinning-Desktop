@@ -1,0 +1,34 @@
+{
+  "name": "appthinning",
+  "build": {
+    "appId": "com.catchzeng.appthinning",
+    "productName": "AppThinning",
+    "asar": false,
+    "nsis": {
+      "oneClick": true,
+      "perMachine": true
+    },
+    "win": {
+      "requestedExecutionLevel": "highestAvailable"
+    }
+  },
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.12"
+  },
+  "devDependencies": {
+    "electron": "5.0.6",
+    "electron-builder": "^21.0.11",
+    "electron-webpack": "^2.7.4",
+    "electron-webpack-vue": "^2.3.0",
+    "vue": "^2.6.10",
+    "webpack": "~4.35.3"
+  }
+}
