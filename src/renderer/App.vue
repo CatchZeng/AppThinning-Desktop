@@ -18,6 +18,12 @@
     <input v-model="maxSize" type="text" placeholder="max" oninput = "value=value.replace(/[^\d]/g,'')">
     Kb
 
+    <p> Compression type </p>
+		<label><input type="radio" v-model="compression" value="imageOptim">ImageOptim</label>
+		<label><input type="radio" v-model="compression" value="tinyPng">TinyPng</label>
+    <input v-show="compression=='tinyPng'" v-model="key" type="text" placeholder="TinyPng key">
+
+    <p></p>
     <div class="button">
       <button class="start" v-on:click="onStartButtonClicked">start</button>
     </div>
@@ -31,7 +37,7 @@ import { type, constants } from 'os';
 export default {  
   data: function () {
       return {
-        path: "",
+        path: undefined,
         pngEnabled: true,
         jpgEnabled: true,
         jpegEnabled: true,
@@ -39,6 +45,8 @@ export default {
         svgEnabled: true,
         miniSize: "",
         maxSize: "",
+        compression: 'imageOptim',
+        key: undefined
       }
   },
   methods: {
@@ -50,20 +58,22 @@ export default {
       console.log("types: "+ types)
       console.log("miniSize: "+ miniSize)
       console.log("maxSize: "+ maxSize)
-      appthinning(this.path, types, miniSize, )
+      console.log("compression: "+ this.compression)
+      console.log("key: "+ this.key)
+      appthinning(this.path, types, miniSize, maxSize, this.compression, this.key)
     },
     getMiniSize: function() {
       if (this.miniSize.length > 0) {
         return this.miniSize
       } else {
-        return null
+        return undefined
       }
     },
     getMaxSize: function() {
       if (this.maxSize.length > 0) {
         return this.maxSize
       } else {
-        return null
+        return undefined
       }
     },
     getTypes: function() {
@@ -82,6 +92,9 @@ export default {
       }
       if(this.svgEnabled){
         types += "svg|"
+      }
+      if (types.length < 1) {
+        return undefined
       }
       if (types[types.length-1] === "|"){
         types = types.substring(0, types.length - 1)

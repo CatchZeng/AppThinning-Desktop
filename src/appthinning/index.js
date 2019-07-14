@@ -3,15 +3,27 @@ import child_process from 'child_process';
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
-function appthinning(projectPath, types, miniSize, maxSize) {
+function appthinning(projectPath, types, miniSize, maxSize, compression, key) {
     const cmdPath = srcPath("appthinning/index.js")
-    var cmd = "node "+cmdPath+" -d " + projectPath + " -t "+ "\"" + types +"\""
-    if (miniSize != null) {
-        cmd += " -s " + miniSize
+    var cmd = "node "+cmdPath
+    if (projectPath) {
+      cmd += " -d " + projectPath
     }
-    if (maxSize != null) {
+    if (types) {
+      cmd += " -t "+ "\"" + types +"\""
+    }
+    if (miniSize) {
+      cmd += " -s " + miniSize
+    }
+    if (maxSize) {
       cmd += " -m " + maxSize
     }
+    cmd +=" -c " + compression
+    if (key) {
+      cmd +=" -k " + key
+    }
+
+    console.log(cmd);
 
     child_process.exec(cmd, function(error, stdout, stderr) {
         if(error){
