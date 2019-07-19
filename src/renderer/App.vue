@@ -3,7 +3,10 @@
     <p class="title"> AppThinning </p>
 
     <p class="path"> Your project path </p>
-    <input type="text" v-model="path"/>
+    <div>
+      <p class="alert alert-info" id="drag-file" v-show="path =='Drag your project here.'" @drop="onDrop" @dragover.prevent >{{path}}</p>
+      <input type="text" id="projectPath" v-show="path !='Drag your project here.'" v-model="path"/>
+    </div>
 
     <p> Support types </p>
     <label><input v-model="jpgEnabled" type="checkbox"/>jpg</label> 
@@ -37,7 +40,7 @@ import { type, constants } from 'os';
 export default {  
   data: function () {
       return {
-        path: undefined,
+        path: "Drag your project here.",
         pngEnabled: true,
         jpgEnabled: true,
         jpegEnabled: true,
@@ -50,6 +53,16 @@ export default {
       }
   },
   methods: {
+    onDrop: function(event) {
+      console.log('drop')
+      event.preventDefault();
+      event.stopPropagation();
+
+      for (let f of event.dataTransfer.files) {
+        console.log('The file(s) you dragged: ', f)
+        this.path = f.path
+      }
+    },
     onStartButtonClicked: function (event) {
       const types = this.getTypes()
       const miniSize = this.getMiniSize()
