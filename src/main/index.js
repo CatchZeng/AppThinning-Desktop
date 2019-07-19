@@ -12,6 +12,8 @@ let mainWindow
 function createMainWindow() {
   const window = new BrowserWindow({webPreferences: {nodeIntegration: true}})
 
+  window.setSize(520, 720)
+
   if (isDevelopment) {
     window.webContents.openDevTools()
   }

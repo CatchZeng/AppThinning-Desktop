@@ -1,34 +1,44 @@
 <template>
   <div class="box">
-    <p class="title"> AppThinning </p>
-
-    <p class="path"> Your project path </p>
-    <div>
-      <p class="alert alert-info" id="drag-file" v-show="path =='Drag your project here.'" @drop="onDrop" @dragover.prevent >{{path}}</p>
-      <input type="text" id="projectPath" v-show="path !='Drag your project here.'" v-model="path"/>
+    <div class="logo">
+      <img src="../../images/icon.png" width="150"/>
     </div>
 
-    <p> Support types </p>
-    <label><input v-model="jpgEnabled" type="checkbox"/>jpg</label> 
-    <label><input v-model="jpegEnabled" type="checkbox"/>jpeg</label> 
-    <label><input v-model="pngEnabled" type="checkbox"/>png</label> 
-    <label><input v-model="gifEnabled" type="checkbox"/>gif</label> 
-    <label><input v-model="svgEnabled" type="checkbox"/>svg</label>
+    <div class="project">
+      <p class="titles"> Project path</p>
+      <input class="pathInput" v-show="showPathInput" type="text" v-model="path"/>
+    </div>
 
-    <p> Size </p>
-     <input v-model="miniSize" type="text" placeholder="mini" oninput = "value=value.replace(/[^\d]/g,'')">
-    -
-    <input v-model="maxSize" type="text" placeholder="max" oninput = "value=value.replace(/[^\d]/g,'')">
-    Kb
+    <div class="drag" v-show="!showPathInput">
+      <span class="dragBox" @drop="onDrop" @dragover.prevent >Drag your project here.</span>
+    </div>
 
-    <p> Compression type </p>
+    <div>
+      <p class="titles"> Support types </p>
+      <label><input v-model="jpgEnabled" type="checkbox"/>jpg</label> 
+      <label><input v-model="jpegEnabled" type="checkbox"/>jpeg</label> 
+      <label><input v-model="pngEnabled" type="checkbox"/>png</label> 
+      <label><input v-model="gifEnabled" type="checkbox"/>gif</label> 
+      <label><input v-model="svgEnabled" type="checkbox"/>svg</label>
+    </div>
+
+    <div>
+      <p class="titles"> Size (KB)</p>
+      <input class="sizeInput" v-model="miniSize" type="text" placeholder="mini" oninput = "value=value.replace(/[^\d]/g,'')">
+      -
+      <input class="sizeInput" v-model="maxSize" type="text" placeholder="max" oninput = "value=value.replace(/[^\d]/g,'')">
+    </div>
+
+    <div>
+    <p class="titles"> Compression type </p>
 		<label><input type="radio" v-model="compression" value="imageOptim">ImageOptim</label>
 		<label><input type="radio" v-model="compression" value="tinyPng">TinyPng</label>
-    <input v-show="compression=='tinyPng'" v-model="key" type="text" placeholder="TinyPng key">
+    <input class="tinyPngInput" v-show="compression=='tinyPng'" v-model="key" type="text" placeholder="TinyPng key">
+    </div>
 
     <p></p>
-    <div class="button">
-      <button class="start" v-on:click="onStartButtonClicked">start</button>
+    <div class="buttons">
+      <button class="button" v-on:click="onStartButtonClicked">start</button>
     </div>
   </div>
 </template>
@@ -40,7 +50,7 @@ import { type, constants } from 'os';
 export default {  
   data: function () {
       return {
-        path: "Drag your project here.",
+        path: undefined,
         pngEnabled: true,
         jpgEnabled: true,
         jpegEnabled: true,
@@ -49,7 +59,8 @@ export default {
         miniSize: "",
         maxSize: "",
         compression: 'imageOptim',
-        key: undefined
+        key: undefined,
+        showPathInput: false
       }
   },
   methods: {
@@ -61,6 +72,7 @@ export default {
       for (let f of event.dataTransfer.files) {
         console.log('The file(s) you dragged: ', f)
         this.path = f.path
+        this.showPathInput = true
       }
     },
     onStartButtonClicked: function (event) {
@@ -119,4 +131,110 @@ export default {
 </script>
 
 <style scoped>
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.titles {
+  font-size: 1.0em;
+  text-align: left;
+  color: gray;
+  margin-right: 10px;
+}
+
+.pathInput {
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 48px;
+  border: 1px solid #f2f2f2;
+  background: #f6f6f6;
+  color: #202124;
+  font-size: 16px;
+  line-height: 48px;
+  border-radius: 8px;
+}
+
+.drag {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.dragBox {
+    display: inline-block;
+    width: 300px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    line-height: 100px;
+}
+
+.sizeInput {
+  height: 35px;
+  border: 1px solid #f2f2f2;
+  background: #f6f6f6;
+  color: #202124;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.tinyPngInput {
+  width: 40%;
+  height: 35px;
+  border: 1px solid #f2f2f2;
+  background: #f6f6f6;
+  color: #202124;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+    width: 300px;
+    outline:none;
+    background-color: cornflowerblue;
+    border-radius: 4px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input[type=text]:focus { 
+    outline: none;
+    border-color: cornflowerblue;
+    background-color: #fff;
+ }
+input[type=text]::selection{
+    background:transparent;
+    background-color: #fff;
+}
+input[type=text]::-moz-selection{
+    background:transparent;
+    background-color: #fff;
+}
+
 </style>
