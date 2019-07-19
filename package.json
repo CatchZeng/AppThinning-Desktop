@@ -12,8 +12,7 @@
       "requestedExecutionLevel": "highestAvailable"
     },
     "files": [
-      "node/**",
-      "images/**"
+      "node/**"
     ]
   },
   "version": "0.1.0",
@@ -21,7 +20,7 @@
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
-    "dist": "yarn compile && electron-builder",
+    "dist": "export CSC_IDENTITY_AUTO_DISCOVERY=false && yarn compile && electron-builder && npm run bin",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
     "bin": "cp -r node_modules/appthinning/node_modules dist/mac/AppThinning.app/Contents/Resources/app/node_modules/appthinning/node_modules"
   },
