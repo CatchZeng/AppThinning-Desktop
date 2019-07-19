@@ -25,7 +25,7 @@
     "bin": "cp -r node_modules/appthinning/node_modules dist/mac/AppThinning.app/Contents/Resources/app/node_modules/appthinning/node_modules"
   },
   "dependencies": {
-    "appthinning": "^0.1.6",
+    "appthinning": "^0.1.7",
     "source-map-support": "^0.5.12"
   },
   "devDependencies": {
