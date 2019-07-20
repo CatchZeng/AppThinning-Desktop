@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import appthinning from 'appthinning';
-import { showToast,ToastType} from '../utils'
-import { type, constants } from 'os';
+import { showToast, ToastType} from '../utils'
+import { type, constants } from 'os'
+import appthinning from 'appthinning'
 
 export default {  
   data: function () {
@@ -84,10 +84,10 @@ export default {
       console.log("key: "+ this.key)
       appthinning(this.path, types, miniSize, maxSize, this.compression, this.key)
       .then(function(data){
-          showToast(ToastType.Success, data)
+          showToast(ToastType.Success, data, 2000)
       })
       .catch(function(err){
-        showToast(ToastType.Failed, err.message)
+        showToast(ToastType.Failed, err.message, 3000)
       })
     },
     getMiniSize: function() {

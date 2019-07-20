@@ -10,10 +10,7 @@
     },
     "win": {
       "requestedExecutionLevel": "highestAvailable"
-    },
-    "files": [
-      "node/**"
-    ]
+    }
   },
   "version": "0.1.0",
   "license": "MIT",
@@ -25,7 +22,7 @@
     "bin": "cp -r node_modules/appthinning/node_modules dist/mac/AppThinning.app/Contents/Resources/app/node_modules/appthinning/node_modules"
   },
   "dependencies": {
-    "appthinning": "^0.1.8",
+    "appthinning": "^0.2.0",
     "source-map-support": "^0.5.12",
     "toastify-js": "^1.6.1"
   },

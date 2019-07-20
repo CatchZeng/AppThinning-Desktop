@@ -31,5 +31,5 @@ function showToast(type, msg, duration) {
 export {
     isMac,
     showToast,
-    ToastType,
+    ToastType
 }
