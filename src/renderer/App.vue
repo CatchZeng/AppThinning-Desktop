@@ -40,7 +40,8 @@
 </template>
 
 <script>
-import appthinning from '../appthinning'
+import appthinning from 'appthinning';
+import { showToast,ToastType} from '../utils'
 import { type, constants } from 'os';
 
 export default {  
@@ -82,6 +83,12 @@ export default {
       console.log("compression: "+ this.compression)
       console.log("key: "+ this.key)
       appthinning(this.path, types, miniSize, maxSize, this.compression, this.key)
+      .then(function(data){
+          showToast(ToastType.Success, data)
+      })
+      .catch(function(err){
+        showToast(ToastType.Failed, err.message)
+      })
     },
     getMiniSize: function() {
       if (this.miniSize.length > 0) {
