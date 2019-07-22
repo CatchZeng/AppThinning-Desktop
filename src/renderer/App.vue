@@ -40,6 +40,10 @@
     <div class="buttons">
       <button class="button" v-on:click="onStartButtonClicked">start</button>
     </div>
+
+    <loading :active.sync="isLoading" color="#1E90FF"
+        :is-full-page="fullPage">
+    </loading>
   </div>
 </template>
 
@@ -47,6 +51,9 @@
 import { showToast, ToastType} from '../utils'
 import { type, constants } from 'os'
 import appthinning from 'appthinning'
+
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {  
   data: function () {
@@ -61,8 +68,13 @@ export default {
         maxSize: "",
         compression: 'imageOptim',
         key: undefined,
-        showPathInput: false
+        showPathInput: false,
+        isLoading: false,
+        fullPage: true
       }
+  },
+  components: {
+    Loading
   },
   methods: {
     onDrop: function(event) {
@@ -86,11 +98,17 @@ export default {
       console.log("maxSize: "+ maxSize)
       console.log("compression: "+ this.compression)
       console.log("key: "+ this.key)
+
+      this.isLoading = true
+      var that = this
+
       appthinning(this.path, types, miniSize, maxSize, this.compression, this.key)
       .then(function(data){
-          showToast(ToastType.Success, data, 2000)
+        that.isLoading = false
+        showToast(ToastType.Success, data, 3000)
       })
       .catch(function(err){
+        that.isLoading = false
         showToast(ToastType.Failed, err.message, 3000)
       })
     },
