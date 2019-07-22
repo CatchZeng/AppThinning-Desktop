@@ -48,10 +48,11 @@
 </template>
 
 <script>
-import { showToast, ToastType} from '../utils'
+import { getStatic, showToast, ToastType} from '../utils'
 import { type, constants } from 'os'
 import appthinning from 'appthinning'
 import path from 'path'
+
 
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
@@ -72,7 +73,7 @@ export default {
         showPathInput: false,
         isLoading: false,
         fullPage: true,
-        logoPath: path.join(__static, "/icon.png")
+        logoPath: getStatic("/icon.png")
       }
   },
   components: {

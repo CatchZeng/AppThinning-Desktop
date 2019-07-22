@@ -1,6 +1,17 @@
 import os from 'os'
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import * as url from 'url'
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
+// see https://github.com/electron-userland/electron-webpack/issues/99#issuecomment-459251702
+function getStatic(val) {
+  if (isDevelopment) {
+    return url.resolve(window.location.origin, val)
+  }
+  return path.resolve(__static, val)
+}
 
 function isMac() {
     const platform = os.platform()
@@ -31,5 +42,6 @@ function showToast(type, msg, duration) {
 export {
     isMac,
     showToast,
-    ToastType
+    ToastType,
+    getStatic
 }
