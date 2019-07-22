@@ -1,5 +1,9 @@
 <template>
   <div class="box">
+    <div class="logo">
+      <img src="https://github.com/CatchZeng/AppThinning/raw/master/logo.png" width="120"/>
+    </div>
+
     <div class="project">
       <p class="titles"> Project path</p>
       <input class="pathInput" v-show="showPathInput" type="text" v-model="path"/>
@@ -137,6 +141,13 @@ export default {
 .box {
   display: flex;
   flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .project {
