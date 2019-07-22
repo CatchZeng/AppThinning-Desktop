@@ -2,6 +2,7 @@ import os from 'os'
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import * as url from 'url'
+import path from 'path'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -10,7 +11,7 @@ function getStatic(val) {
   if (isDevelopment) {
     return url.resolve(window.location.origin, val)
   }
-  return path.resolve(__static, val)
+  return path.join(__static, val)
 }
 
 function isMac() {
