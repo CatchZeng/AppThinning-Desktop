@@ -17,12 +17,11 @@
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
-    "dist": "export CSC_IDENTITY_AUTO_DISCOVERY=false && yarn compile && electron-builder && npm run bin",
-    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
-    "bin": "cp -r node_modules/appthinning/node_modules dist/mac/AppThinning.app/Contents/Resources/app/node_modules/appthinning/node_modules"
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
-    "appthinning": "^0.2.0",
+    "appthinning": "^0.2.1",
     "source-map-support": "^0.5.12",
     "toastify-js": "^1.6.1"
   },
