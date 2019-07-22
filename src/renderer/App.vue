@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="logo">
-      <img src="https://github.com/CatchZeng/AppThinning/raw/master/logo.png" width="120"/>
+      <img :src="logoPath" width="120"/>
     </div>
 
     <div class="project">
@@ -51,6 +51,7 @@
 import { showToast, ToastType} from '../utils'
 import { type, constants } from 'os'
 import appthinning from 'appthinning'
+import path from 'path'
 
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
@@ -70,7 +71,8 @@ export default {
         key: undefined,
         showPathInput: false,
         isLoading: false,
-        fullPage: true
+        fullPage: true,
+        logoPath: path.join(__static, "/icon.png")
       }
   },
   components: {
