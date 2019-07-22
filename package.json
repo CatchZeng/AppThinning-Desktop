@@ -3,7 +3,6 @@
   "build": {
     "appId": "com.catchzeng.appthinning",
     "productName": "AppThinning",
-    "asar": false,
     "nsis": {
       "oneClick": true,
       "perMachine": true
@@ -21,7 +20,7 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
-    "appthinning": "^0.2.1",
+    "appthinning": "^0.2.2",
     "source-map-support": "^0.5.12",
     "toastify-js": "^1.6.1",
     "vue-loading-overlay": "^3.2.0"

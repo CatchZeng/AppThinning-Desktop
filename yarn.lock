@@ -1040,10 +1040,10 @@ app-builder-lib@21.0.11, app-builder-lib@~21.0.11:
     semver "^6.2.0"
     temp-file "^3.3.3"
 
-appthinning@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.npmjs.org/appthinning/-/appthinning-0.2.1.tgz#085ef60c5bc5d1ffb8a4e5fd5290cee098026bd8"
-  integrity sha512-LU8G/Pz+WIsvOyJ7vVjPPImlqWuc6odXURxa8kWP64Lr3jtq0FGfhS90yaf/yDlMqdE7h1BhTiuxwVIWvvIf9A==
+appthinning@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.npmjs.org/appthinning/-/appthinning-0.2.2.tgz#01c5ab306a6640c96570977be3ab73114df52a10"
+  integrity sha512-572QY3uWNb942x+lC12yCKRUia/l+OPvku3/Q0/VSsz4B7oDkuHJAqD7oSWZ/vo5baOtmhjhmVZrWK7SKcSUfQ==
   dependencies:
     chalk "^2.4.2"
     clear "^0.1.0"
