@@ -3,6 +3,9 @@
         "Toastify",
         "appthinning",
         "asar",
-        "nsis"
+        "hideothers",
+        "nsis",
+        "submenu",
+        "unhide"
     ]
 }

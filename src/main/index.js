@@ -61,4 +61,16 @@ app.on('activate', () => {
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow()
+  const {Menu} = require('electron')
+  const template = [
+    {
+      label: app.getName(),
+      submenu: [{ role: 'about' }, { type: 'separator' }, { role: 'hide' }, { role: 'hideothers' }, { role: 'unhide' }, { type: 'separator' }, { role: 'quit' }]
+    },
+    {
+      role: 'window',
+      submenu: [{ role: 'minimize' }, { role: 'close' }]
+    }
+  ];
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 })
