@@ -5,7 +5,7 @@
     </div>
 
     <div class="project">
-      <p class="titles"> Project path</p>
+      <p class="titles"> Project directory</p>
       <input class="pathInput" v-show="showPathInput" type="text" v-model="path"/>
     </div>
 
@@ -14,7 +14,7 @@
     </div>
 
     <div>
-      <p class="titles"> Support types </p>
+      <p class="titles"> File types </p>
       <label><input v-model="jpgEnabled" type="checkbox"/>jpg</label> 
       <label><input v-model="jpegEnabled" type="checkbox"/>jpeg</label> 
       <label><input v-model="pngEnabled" type="checkbox"/>png</label> 
@@ -24,9 +24,9 @@
 
     <div>
       <p class="titles"> Size (KB)</p>
-      <input class="sizeInput" v-model="miniSize" type="text" placeholder="mini" oninput = "value=value.replace(/[^\d]/g,'')">
+      <input class="sizeInput" v-model="miniSize" type="text" placeholder="100" oninput = "value=value.replace(/[^\d]/g,'')">
       -
-      <input class="sizeInput" v-model="maxSize" type="text" placeholder="max" oninput = "value=value.replace(/[^\d]/g,'')">
+      <input class="sizeInput" v-model="maxSize" type="text" placeholder="Infinite" oninput = "value=value.replace(/[^\d]/g,'')">
     </div>
 
     <div>
@@ -49,11 +49,7 @@
 
 <script>
 import { getStatic, showToast, ToastType} from '../utils'
-import { type, constants } from 'os'
 import appthinning from 'appthinning'
-import path from 'path'
-
-
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 
