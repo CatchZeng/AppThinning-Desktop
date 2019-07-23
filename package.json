@@ -9,8 +9,12 @@
     },
     "win": {
       "requestedExecutionLevel": "highestAvailable"
-    }
+    },
+    "copyright": "Copyright © 2019 ${author}",
+    "buildVersion": "1"
   },
+  "homepage": "https://github.com/CatchZeng/AppThinning-Desktop",
+  "author": "CatchZeng",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
