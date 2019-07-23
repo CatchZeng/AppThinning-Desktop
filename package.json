@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/CatchZeng/AppThinning-Desktop",
   "author": "CatchZeng",
-  "version": "0.1.0",
+  "version": "0.2.4",
   "license": "MIT",
   "scripts": {
     "dev": "electron-webpack dev",
