@@ -68,6 +68,13 @@ app.on('ready', () => {
       submenu: [{ role: 'about' }, { type: 'separator' }, { role: 'hide' }, { role: 'hideothers' }, { role: 'unhide' }, { type: 'separator' }, { role: 'quit' }]
     },
     {
+      label: "Edit",
+      submenu: [
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+      ]
+    },
+    {
       role: 'window',
       submenu: [{ role: 'minimize' }, { role: 'close' }]
     }
