@@ -52,6 +52,7 @@ import { getStatic, showToast, ToastType} from '../utils'
 import appthinning from 'appthinning'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import open from 'open'
 
 export default {  
   data: function () {
@@ -109,6 +110,16 @@ export default {
       .catch(function(err){
         that.isLoading = false
         showToast(ToastType.Failed, err.message, 3000)
+        if (err.code && err.code == 8) {
+          setTimeout( function(){
+            open("https://imageoptim.com/mac")
+          }, 3*1000);
+        }
+        if (err.code && err.code == 6) {
+          setTimeout( function(){
+            open("https://tinypng.com/developers")
+          }, 3*1000);
+        }
       })
     },
     getMiniSize: function() {
