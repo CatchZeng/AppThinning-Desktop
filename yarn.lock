@@ -1040,10 +1040,10 @@ app-builder-lib@21.0.11, app-builder-lib@~21.0.11:
     semver "^6.2.0"
     temp-file "^3.3.3"
 
-appthinning@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.npmjs.org/appthinning/-/appthinning-0.2.5.tgz#91a2440e0a7c1f1b9c1979e9cddaf93486b1e958"
-  integrity sha512-m6vo5o/E2yozF88ckldbLpNDGbhLNg98dZqC761XIhJC5Pf+O7HTLY3SsSbmz3Ad96tKG04/umyf7KeQV4hsyg==
+appthinning@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.npmjs.org/appthinning/-/appthinning-0.2.6.tgz#fa06db285bf2ee312d69ad75611928a67ffc6e80"
+  integrity sha512-2G0i8y5V+EOClZfesFvaoGVOvUlOAOQaPr5LcXnXLhmaLvLGl04iEW/RzzzJT1JrBQ44/jBnLA+/0O+gj7qevw==
   dependencies:
     chalk "^2.4.2"
     clear "^0.1.0"
@@ -1051,6 +1051,7 @@ appthinning@^0.2.5:
     commander "^2.19.0"
     figlet "^1.2.1"
     fs-extra "^8.1.0"
+    middleware-center "^1.2.0"
     node-cmd "^3.0.0"
     svgo "^1.1.1"
     tinify "^1.6.0-beta.2"
@@ -4732,6 +4733,11 @@ micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
+
+middleware-center@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/middleware-center/-/middleware-center-1.2.0.tgz#fe4b86976833a741a9fc51af864ae83a6b9f109e"
+  integrity sha512-1za4njWjK8OCftozfu4GKMKWEUmNPzHoQ6oGr9IXhlgACFNMikocswsI09U1Cak6CKAXa31ZLROU6ORfEL5KbQ==
 
 miller-rabin@^4.0.0:
   version "4.0.1"
