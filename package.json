@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/CatchZeng/AppThinning-Desktop",
   "author": "CatchZeng",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "license": "MIT",
   "scripts": {
     "dev": "electron-webpack dev",
@@ -24,7 +24,7 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
-    "appthinning": "^0.2.6",
+    "appthinning": "^0.2.7",
     "open": "^6.4.0",
     "source-map-support": "^0.5.12",
     "toastify-js": "^1.6.1",
